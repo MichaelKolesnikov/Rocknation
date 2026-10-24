@@ -1,0 +1,55 @@
+[project]
+name = "rocknation"
+version = "1.0.0"
+description = "Rocknation — каталог, онлайн-прослушивание и загрузка рок-музыки с rocknation.su"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Michael Kolesnikov" }]
+dependencies = [
+    "flet==1.0.5",
+    "flet-bg-audio",
+    "flet-permission-handler==1.0.5",
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+# `flet run` on desktop plays through flet-audio (no background extension there).
+desktop = ["flet-audio==1.0.5"]
+
+[tool.flet]
+org = "su.rocknation"
+product = "Rocknation"
+company = "Rocknation"
+copyright = "Copyright (C) 2026 Michael Kolesnikov"
+
+[tool.flet.app]
+path = "src"
+
+[tool.flet.dev_packages]
+flet-bg-audio = "flet_bg_audio"
+
+# The background player needs a custom MainActivity and a media service in the
+# manifest. Generate the template with `python tools/prepare_template.py`.
+[tool.flet.template]
+url = "build_template"
+dir = "build"
+
+[tool.flet.android]
+target_arch = ["arm64-v8a"]
+# background behind src/assets/icon.png on adaptive (Android 8+) launcher icons
+adaptive_icon_background = "#16161A"
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+"android.permission.WAKE_LOCK" = true
+"android.permission.FOREGROUND_SERVICE" = true
+"android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" = true
+"android.permission.POST_NOTIFICATIONS" = true
+"android.permission.MANAGE_EXTERNAL_STORAGE" = true
+"android.permission.READ_EXTERNAL_STORAGE" = { maxSdkVersion = "32" }
+"android.permission.WRITE_EXTERNAL_STORAGE" = { maxSdkVersion = "29" }
+
+[tool.flet.android.manifest_application]
+requestLegacyExternalStorage = "true"

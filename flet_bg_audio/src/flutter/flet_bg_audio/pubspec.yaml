@@ -1,0 +1,21 @@
+name: flet_bg_audio
+description: Background audio playback with a media notification for Flet.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  audio_service: ^0.18.15
+  audio_session: ^0.2.1
+  just_audio: ^0.10.4
+
+  flet: ">=1.0.0 <2.0.0"
+
+dev_dependencies:
+  flutter_lints: ^3.0.0

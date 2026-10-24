@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+build_template/
+storage/
+*.egg-info/
+.dart_tool/
