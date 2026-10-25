@@ -48,7 +48,7 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
-          args=(--arch arm64-v8a --build-number "$GITHUB_RUN_NUMBER")
+          args=(--yes --arch arm64-v8a --build-number "$GITHUB_RUN_NUMBER")
           if [ "$HAS_KEYSTORE" = true ]; then
             args+=(--android-signing-key-store "$RUNNER_TEMP/release.jks"
                    --android-signing-key-store-password "$ANDROID_KEYSTORE_PASSWORD"
@@ -108,7 +108,7 @@ jobs:
           IOS_SIGNING_CERTIFICATE: ${{ secrets.IOS_SIGNING_CERTIFICATE }}
           IOS_EXPORT_METHOD: ${{ vars.IOS_EXPORT_METHOD || 'ad-hoc' }}
         run: |
-          args=(--build-number "$GITHUB_RUN_NUMBER")
+          args=(--yes --build-number "$GITHUB_RUN_NUMBER")
           if [ "$HAS_CERTIFICATE" = true ]; then
             args+=(--ios-team-id "$IOS_TEAM_ID"
                    --ios-export-method "$IOS_EXPORT_METHOD"
