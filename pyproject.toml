@@ -53,3 +53,7 @@ adaptive_icon_background = "#16161A"
 
 [tool.flet.android.manifest_application]
 requestLegacyExternalStorage = "true"
+
+# lets audio_service keep playing with the screen locked
+[tool.flet.ios.info]
+UIBackgroundModes = ["audio"]
